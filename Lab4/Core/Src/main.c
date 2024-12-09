@@ -59,19 +59,39 @@ static void MX_TIM4_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
-{
-  uint32_t adcValue;
-
-  if(hadc->Instance == ADC1)
-  {
-        adcValue = HAL_ADC_GetValue(&hadc1);
-        TIM4->CCR1 = adcValue;
-        TIM4->CCR2 = adcValue;
-        TIM4->CCR3 = adcValue;
-        HAL_ADC_Start_IT(&hadc1);
-  }
+void ADC_SELECT_CH1() {
+	ADC_ChannelConfTypeDef sConfig = {0};
+	sConfig.Channel = ADC_CHANNEL_3;
+	sConfig.Rank = 1;
+	sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+	if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+	{
+	    Error_Handler();
+	}
 }
+
+void ADC_SELECT_CH2() {
+	ADC_ChannelConfTypeDef sConfig = {0};
+	sConfig.Channel = ADC_CHANNEL_2;
+	sConfig.Rank = 1;
+	sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+	if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+	{
+	    Error_Handler();
+	}
+}
+
+void ADC_SELECT_CH3() {
+	ADC_ChannelConfTypeDef sConfig = {0};
+	sConfig.Channel = ADC_CHANNEL_1;
+	sConfig.Rank = 1;
+	sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES;
+	if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+	{
+	    Error_Handler();
+	}
+}
+
 
 /* USER CODE END 0 */
 
@@ -110,7 +130,8 @@ int main(void)
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3);
-  HAL_ADC_Start_IT(&hadc1);
+  uint32_t adcValue = 0;
+  volatile HAL_StatusTypeDef adcPoolResult;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -118,6 +139,35 @@ int main(void)
 
   while (1)
   {
+	  ADC_SELECT_CH1();
+	  HAL_ADC_Start(&hadc1);
+	  adcPoolResult = HAL_ADC_PollForConversion(&hadc1, 10);
+	  if (adcPoolResult == HAL_OK)
+	  	  adcValue = HAL_ADC_GetValue(&hadc1);
+	  else
+	  	  continue;
+	  TIM4->CCR1 = adcValue;
+	  HAL_ADC_Stop(&hadc1);
+
+
+	  ADC_SELECT_CH2();
+	  HAL_ADC_Start(&hadc1);
+	  adcPoolResult = HAL_ADC_PollForConversion(&hadc1, 10);
+	  if (adcPoolResult == HAL_OK)
+	  	  adcValue = HAL_ADC_GetValue(&hadc1);
+	  else
+	  	  continue;
+	  TIM4->CCR2 = adcValue;
+	  HAL_ADC_Stop(&hadc1);
+
+	  ADC_SELECT_CH3();
+	  HAL_ADC_Start(&hadc1);
+	  adcPoolResult = HAL_ADC_PollForConversion(&hadc1, 10);
+	  if (adcPoolResult == HAL_OK)
+	  	  adcValue = HAL_ADC_GetValue(&hadc1);
+	  else
+	  	  continue;
+	  TIM4->CCR3 = adcValue;
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
