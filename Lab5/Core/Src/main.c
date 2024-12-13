@@ -97,6 +97,28 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  uint8_t rcvBuf[1];
+	  HAL_StatusTypeDef result;
+
+	  result = HAL_UART_Receive(&huart3, rcvBuf, 1, 10);
+
+	  if (result == HAL_OK) {
+		  switch (rcvBuf[0]) {
+		  case '1':
+			  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
+			  HAL_UART_Transmit(&huart3, (uint8_t *)" - Blue ON\r\n", 12, 100);
+			  break;
+
+	      case '2':
+	    	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_RESET);
+	    	  HAL_UART_Transmit(&huart3, (uint8_t *)" - Blue OFF\r\n", 13, 100);
+	    	  break;
+
+	      default:
+	    	  HAL_UART_Transmit(&huart3, (uint8_t *)" - UnexpCmd\r\n", 13, 100);
+	    	  break;
+	      }
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
