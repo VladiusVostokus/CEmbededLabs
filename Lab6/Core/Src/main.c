@@ -29,6 +29,21 @@
 typedef enum
 {
 	C4,
+	C5,
+	D5,
+	E5,
+	F5,
+	G5,
+	A5,
+	B5,
+	C6,
+	D6,
+	E6,
+	F6,
+	G6,
+	A6,
+	B6,
+	C7,
 	MAX_VALUE
 } soundToneType;
 
@@ -162,6 +177,51 @@ void CS43L22_Beep(soundToneType pitch, uint32_t duration_ms)
 		case C4:
 			TxBuffer[1] = 0x00;		// Value (frequency and on time)
 			break;
+		case C5:
+			TxBuffer[1] = 0x10;		// Value (frequency and on time)
+			break;
+		case D5:
+			TxBuffer[1] = 0x20;		// Value (frequency and on time)
+			break;
+		case E5:
+			TxBuffer[1] = 0x30;		// Value (frequency and on time)
+			break;
+		case F5:
+			TxBuffer[1] = 0x40;		// Value (frequency and on time)
+			break;
+		case G5:
+			TxBuffer[1] = 0x50;		// Value (frequency and on time)
+			break;
+		case A5:
+			TxBuffer[1] = 0x60;		// Value (frequency and on time)
+			break;
+		case B5:
+			TxBuffer[1] = 0x70;		// Value (frequency and on time)
+			break;
+		case C6:
+			TxBuffer[1] = 0x80;		// Value (frequency and on time)
+			break;
+		case D6:
+			TxBuffer[1] = 0x90;		// Value (frequency and on time)
+			break;
+		case E6:
+			TxBuffer[1] = 0xA0;		// Value (frequency and on time)
+			break;
+		case F6:
+			TxBuffer[1] = 0xB0;		// Value (frequency and on time)
+			break;
+		case G6:
+			TxBuffer[1] = 0xC0;		// Value (frequency and on time)
+			break;
+		case A6:
+			TxBuffer[1] = 0xD0;		// Value (frequency and on time)
+			break;
+		case B6:
+			TxBuffer[1] = 0xE0;		// Value (frequency and on time)
+			break;
+		case C7:
+			TxBuffer[1] = 0xF0;		// Value (frequency and on time)
+			break;
 		// Assume C4 for all other cases
 		case MAX_VALUE:
 		default:
@@ -231,11 +291,51 @@ int main(void)
 	  CS43L22_Beep(C4, 1000);
 	  HAL_Delay(500);
 
-	  CS43L22_Beep(C4, 1500);
+	  CS43L22_Beep(C5, 1000);
 	  HAL_Delay(500);
 
-	  CS43L22_Beep(C4, 2000);
+	  CS43L22_Beep(D5, 1000);
 	  HAL_Delay(500);
+
+	  CS43L22_Beep(E5, 1000);
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(F5, 1000);
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(G5, 1000);
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(A5, 1000);
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(B5, 1000);
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(C6, 1000);
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(D6, 1000);
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(E6, 1000);
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(F6, 1000);
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(G6, 1000);
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(A6, 1000);
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(B6, 1000);
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(C7, 1000);
+	  HAL_Delay(500);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
