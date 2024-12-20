@@ -159,6 +159,10 @@ void CS43L22_Init(void)
 	TxBuffer[0] = 0x02;
 	TxBuffer[1] = 0x9E;
 	HAL_I2C_Master_Transmit(&hi2c1, CS43L22_I2C_ADDRESS, (uint8_t*) &TxBuffer, 2, I2C_TIMEOUT);
+
+	TxBuffer[0] = 0x02;
+	TxBuffer[1] = 0x9E;
+	HAL_I2C_Master_Transmit(&hi2c1, CS43L22_I2C_ADDRESS, (uint8_t*) &TxBuffer, 2, I2C_TIMEOUT);
 }
 
 void CS43L22_Beep(soundToneType pitch, uint32_t duration_ms)
@@ -288,6 +292,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  /*
 	  CS43L22_Beep(C4, 1000);
 	  HAL_Delay(500);
 
@@ -334,7 +339,124 @@ int main(void)
 	  HAL_Delay(500);
 
 	  CS43L22_Beep(C7, 1000);
+	  HAL_Delay(500); */
+
+	  CS43L22_Beep(E5, 400);
+	  CS43L22_Beep(E5, 400);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(A5, 400);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(A5, 400);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(B5, 1000);
+	  CS43L22_Beep(F5, 1000);
+
+	  HAL_Delay(400);
+
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(B5, 1000);
+	  CS43L22_Beep(F5, 800);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(F5, 800);
+	  CS43L22_Beep(E5, 400);
+	  CS43L22_Beep(C5, 800);
+	  CS43L22_Beep(D5, 800);
+
+	  HAL_Delay(400);
+
+	  CS43L22_Beep(E5, 400);
+	  CS43L22_Beep(E5, 400);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(A5, 400);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(A5, 400);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(B5, 600);
+	  CS43L22_Beep(C6, 200);
+	  CS43L22_Beep(C6, 1000);
+
+	  HAL_Delay(400);
+
+	  CS43L22_Beep(A5, 300);
+	  CS43L22_Beep(B5, 400);
+	  CS43L22_Beep(B5, 600);
+
+	  HAL_Delay(200);
+
+	  CS43L22_Beep(B5, 300);
+	  CS43L22_Beep(F5, 400);
+	  CS43L22_Beep(F5, 200);
+	  CS43L22_Beep(G5, 400);
+
+
+	  HAL_Delay(400);
+	  CS43L22_Beep(G5, 200);
+	  CS43L22_Beep(F5, 300);
+	  CS43L22_Beep(G5, 200);
+	  CS43L22_Beep(A5, 200);
+	  CS43L22_Beep(G5, 300);
+	  CS43L22_Beep(A5, 200);
+	  CS43L22_Beep(B5, 200);
+	  CS43L22_Beep(A5, 300);
+	  CS43L22_Beep(C6, 200);
+	  CS43L22_Beep(E6, 800);
+
+	  HAL_Delay(400);
+
+	  CS43L22_Beep(C6, 800);
+	  CS43L22_Beep(B5, 800);
+	  CS43L22_Beep(A5, 800);
+
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(A5, 700);
+
+	  CS43L22_Beep(F5, 400);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(A5, 800);
+
+	  HAL_Delay(400);
+
+	  CS43L22_Beep(B5, 400);
+	  CS43L22_Beep(B5, 400);
+	  CS43L22_Beep(B5, 400);
+	  CS43L22_Beep(A5, 400);
+	  CS43L22_Beep(A5, 400);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(F5, 1000);
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(A5, 1000);
+
 	  HAL_Delay(500);
+
+	  CS43L22_Beep(C6, 800);
+	  CS43L22_Beep(B5, 800);
+	  CS43L22_Beep(A5, 800);
+
+	  CS43L22_Beep(G5, 400);
+	  CS43L22_Beep(A5, 700);
+	  CS43L22_Beep(A5, 1300);
+
+	  HAL_Delay(500);
+
+	  CS43L22_Beep(C6, 400);
+	  CS43L22_Beep(C6, 400);
+	  CS43L22_Beep(B5, 800);
+	  CS43L22_Beep(A5, 400);
+	  CS43L22_Beep(B5, 400);
+	  CS43L22_Beep(B5, 1500);
+	  CS43L22_Beep(G5, 1000);
+
+	  HAL_Delay(1000);
+
+	  CS43L22_Beep(C5, 2000);
+
+	  HAL_Delay(1000);
+
+
+
 
     /* USER CODE END WHILE */
 
